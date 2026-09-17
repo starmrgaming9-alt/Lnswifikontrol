@@ -25,7 +25,6 @@ button{font-family:inherit;cursor:pointer;}
 ::-webkit-scrollbar{width:8px;height:8px;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
 
-/* ---- Login ---- */
 #loginScreen{position:fixed;inset:0;background:linear-gradient(135deg,var(--navy) 0%,#12345c 60%,var(--cyan) 140%);
   display:flex;align-items:center;justify-content:center;z-index:200;padding:20px;}
 .login-card{background:var(--panel);border-radius:16px;padding:36px 32px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.35);}
@@ -53,7 +52,6 @@ button{font-family:inherit;cursor:pointer;}
 .role-btn{border:1px solid var(--border);background:var(--bg);border-radius:8px;padding:8px 6px;font-size:12px;color:var(--muted);text-align:center;}
 .role-btn.active{border-color:var(--blue);color:var(--blue);background:rgba(37,99,235,.08);font-weight:600;}
 
-/* ---- App shell ---- */
 #app{display:none;min-height:100vh;}
 .shell{display:flex;min-height:100vh;}
 #sidebar{width:246px;flex:none;background:var(--navy);color:#cfe0f5;display:flex;flex-direction:column;
@@ -67,7 +65,6 @@ button{font-family:inherit;cursor:pointer;}
 .nav-item.active{background:linear-gradient(90deg,rgba(37,99,235,.35),rgba(6,182,212,.15));color:#fff;}
 .nav-item.active .dot{background:var(--cyan);}
 #sidebarOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;}
-
 #main{margin-left:246px;flex:1;min-width:0;display:flex;flex-direction:column;}
 #topbar{height:58px;flex:none;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;
   gap:12px;padding:0 18px;position:sticky;top:0;z-index:40;}
@@ -76,8 +73,6 @@ button{font-family:inherit;cursor:pointer;}
 .spacer{flex:1;}
 .icon-btn{background:none;border:1px solid var(--border);border-radius:8px;width:34px;height:34px;color:var(--text);font-size:15px;}
 .pill{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;}
-.pill-demo{background:#fef3c7;color:#92400e;}
-[data-theme="dark"] .pill-demo{background:#3a2c0c;color:#fcd34d;}
 .user-chip{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:5px 10px;border:1px solid var(--border);border-radius:20px;}
 .avatar{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;}
 
@@ -124,7 +119,6 @@ tr:last-child td{border-bottom:none;}
 .chart-box{position:relative;height:240px;}
 .chart-box.sm{height:180px;}
 
-/* modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(6,12,22,.55);display:none;align-items:center;justify-content:center;z-index:150;padding:16px;}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--panel);border-radius:14px;max-width:420px;width:100%;padding:22px;box-shadow:0 25px 60px rgba(0,0,0,.35);}
@@ -135,7 +129,6 @@ tr:last-child td{border-bottom:none;}
 .strength-bar{height:5px;border-radius:3px;background:var(--border);margin-top:6px;overflow:hidden;}
 .strength-bar div{height:100%;width:0%;background:var(--bad);transition:.2s;}
 
-/* toast */
 #toastHost{position:fixed;top:16px;right:16px;z-index:300;display:flex;flex-direction:column;gap:8px;}
 .toast{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:8px;
   padding:10px 14px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.15);min-width:220px;animation:slidein .2s ease;}
@@ -166,12 +159,11 @@ tr:last-child td{border-bottom:none;}
   #sidebarOverlay.open{display:block;}
 }
 .small-muted{font-size:11.5px;color:var(--muted);}
-.role-note{font-size:11px;color:var(--muted);margin-left:auto;}
 </style>
 </head>
 <body>
 
-<!-- ===================== LOGIN ===================== -->
+<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="brand">
@@ -179,7 +171,6 @@ tr:last-child td{border-bottom:none;}
       <div class="brand-name">WiFi Control Pro</div>
     </div>
     <p class="brand-tag">Smart WiFi Management &amp; Network Monitoring</p>
-
     <div class="err-msg" id="loginErr">Email/username atau password salah.</div>
 
     <div class="role-pick" id="rolePick">
@@ -191,28 +182,28 @@ tr:last-child td{border-bottom:none;}
 
     <div class="field">
       <label>Email / Username</label>
-      <input id="loginUser" type="text" placeholder="admin@wificontrolpro.demo">
+      <input id="loginUser" type="text" placeholder="admin" value="admin">
     </div>
     <div class="field">
       <label>Password</label>
       <div class="pw-wrap">
-        <input id="loginPass" type="password" placeholder="••••••••">
+        <input id="loginPass" type="password" placeholder="••••••••" value="admin">
         <button class="pw-toggle" id="togglePw" type="button">SHOW</button>
       </div>
     </div>
     <div class="row-between">
       <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="rememberMe"> Ingat saya</label>
-      <a href="#" onclick="toast('Link reset password (demo) telah dikirim.','ok');return false;">Lupa password?</a>
+      <a href="#" onclick="toast('Link reset password (demo).','ok');return false;">Lupa password?</a>
     </div>
     <button class="btn-primary" id="loginBtn">Masuk</button>
     <div class="demo-note">
-      <strong>Mode Demo:</strong> Isi apa saja pada kolom di atas lalu klik Masuk. Seluruh data pada aplikasi ini adalah data
-      simulasi dan diberi label <em>Demo</em> — belum terhubung ke perangkat jaringan sungguhan.
+      Login bebas. Data <strong>Dashboard, Devices, PPPoE</strong> diambil real-time dari MikroTik kamu.
+      Fitur lain masih demo.
     </div>
   </div>
 </div>
 
-<!-- ===================== APP ===================== -->
+<!-- APP -->
 <div id="app">
 <div id="sidebarOverlay"></div>
 <div class="shell">
@@ -231,7 +222,7 @@ tr:last-child td{border-bottom:none;}
     <div id="topbar">
       <button id="menuBtn">☰</button>
       <div class="page-title" id="pageTitle">Dashboard</div>
-      <span class="pill pill-demo">DEMO MODE</span>
+      <span class="pill" id="modePill" style="background:#fef3c7;color:#92400e;">CEK...</span>
       <div class="spacer"></div>
       <button class="icon-btn" id="themeToggle" title="Ganti tema">◐</button>
       <button class="icon-btn" id="notifBtn" title="Notifikasi">🔔</button>
@@ -250,11 +241,11 @@ tr:last-child td{border-bottom:none;}
         <div class="grid g2" style="margin-top:14px;">
           <div class="card"><div class="card-title">Bandwidth Realtime <span class="small-muted">Mbps</span></div>
             <div class="chart-box"><canvas id="chartBandwidth"></canvas></div></div>
-          <div class="card"><div class="card-title">Pelanggan Online / Offline</div>
+          <div class="card"><div class="card-title">PPPoE Aktif</div>
             <div class="chart-box"><canvas id="chartCustomers"></canvas></div></div>
         </div>
         <div class="grid g3" style="margin-top:14px;">
-          <div class="card"><div class="card-title">Uptime Router (7 hari)</div>
+          <div class="card"><div class="card-title">Uptime Router</div>
             <div class="chart-box sm"><canvas id="chartUptime"></canvas></div></div>
           <div class="card"><div class="card-title">Gangguan Jaringan</div>
             <div class="chart-box sm"><canvas id="chartGangguan"></canvas></div></div>
@@ -271,48 +262,42 @@ tr:last-child td{border-bottom:none;}
       <section class="page" data-page="mywifi">
         <div class="grid g2">
           <div class="card">
-            <div class="card-title">WiFi Saya <span class="badge b-ok" id="wifiStatusBadge">Aktif</span></div>
+            <div class="card-title">Info Router <span class="badge b-ok" id="wifiStatusBadge">Live</span></div>
             <table>
-              <tr><td>Nama WiFi (2.4GHz)</td><td id="ssid24">Rumah_Budi_2.4G</td></tr>
-              <tr><td>Nama WiFi (5GHz)</td><td id="ssid5">Rumah_Budi_5G</td></tr>
-              <tr><td>Router</td><td>ZTE F609 · ONT-2210</td></tr>
-              <tr><td>Paket</td><td>Home 50 Mbps</td></tr>
-              <tr><td>Download / Upload</td><td>42.3 Mbps / 18.6 Mbps</td></tr>
-              <tr><td>Jumlah Perangkat</td><td>9 perangkat</td></tr>
-              <tr><td>Uptime</td><td>6 hari 4 jam</td></tr>
+              <tr><td>Board</td><td id="ssid24">-</td></tr>
+              <tr><td>RouterOS</td><td id="ssid5">-</td></tr>
+              <tr><td>Uptime</td><td id="mwUptime">-</td></tr>
+              <tr><td>CPU</td><td id="mwCpu">-</td></tr>
+              <tr><td>Download</td><td id="mwRx">-</td></tr>
+              <tr><td>Upload</td><td id="mwTx">-</td></tr>
+              <tr><td>PPPoE Aktif</td><td id="mwPppoe">-</td></tr>
             </table>
           </div>
           <div class="card">
-            <div class="card-title">Kontrol WiFi</div>
-            <div style="display:flex;flex-direction:column;gap:8px;">
-              <button class="btn" onclick="openModal('modalRename')">Ganti Nama WiFi</button>
-              <button class="btn" onclick="openModal('modalPassword')">Ganti Password WiFi</button>
-              <button class="btn" onclick="toggleWifiBand('24')">Aktif/Nonaktifkan 2.4 GHz</button>
-              <button class="btn" onclick="toggleWifiBand('5')">Aktif/Nonaktifkan 5 GHz</button>
-              <button class="btn" onclick="openModal('modalGuest')">Kelola Guest Network</button>
-              <button class="btn" onclick="unsupportedFeature()">Ganti Channel Width</button>
-              <button class="btn btn-danger" onclick="confirmAction('Restart WiFi akan memutus semua perangkat selama ±30 detik. Lanjutkan?', ()=>toast('WiFi berhasil di-restart (demo).','ok'))">Restart WiFi</button>
-            </div>
+            <div class="card-title">Interface</div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>Nama</th><th>Status</th><th>RX (Mbps)</th><th>TX (Mbps)</th></tr></thead>
+              <tbody id="ifaceBody"></tbody>
+            </table></div>
           </div>
         </div>
       </section>
 
-      <!-- CONNECTED DEVICES -->
+      <!-- DEVICES -->
       <section class="page" data-page="devices">
         <div class="grid g4" id="deviceStats"></div>
         <div class="card" style="margin-top:14px;">
           <div class="toolbar">
             <input id="devSearch" placeholder="Cari perangkat / IP / MAC...">
-            <select id="devFilterStatus"><option value="">Semua Status</option><option value="online">Online</option><option value="offline">Offline</option></select>
-            <select id="devFilterBand"><option value="">Semua Band</option><option value="2.4 GHz">2.4 GHz</option><option value="5 GHz">5 GHz</option></select>
+            <select id="devFilterStatus"><option value="">Semua Status</option><option value="online">Online</option></select>
             <div class="spacer"></div>
-            <button class="btn" onclick="renderDevices()">Refresh</button>
+            <button class="btn" onclick="loadRealData()">Refresh</button>
           </div>
           <div class="table-wrap"><table>
-            <thead><tr><th>Perangkat</th><th>IP</th><th>MAC</th><th>Tipe</th><th>Band</th><th>Sinyal</th><th>Traffic</th><th>Status</th><th>Aksi</th></tr></thead>
+            <thead><tr><th>Nama</th><th>IP</th><th>MAC</th><th>Status</th></tr></thead>
             <tbody id="deviceTableBody"></tbody>
           </table></div>
-          <p class="small-muted" style="margin-top:8px;">Nama perangkat bersifat perkiraan; alamat MAC tidak selalu menunjukkan identitas pemilik sebenarnya.</p>
+          <p class="small-muted" style="margin-top:8px;">Data dari ARP + DHCP Lease MikroTik.</p>
         </div>
       </section>
 
@@ -341,7 +326,7 @@ tr:last-child td{border-bottom:none;}
         </div>
       </section>
 
-      <!-- INTERNET DIAGNOSTICS -->
+      <!-- DIAGNOSTICS -->
       <section class="page" data-page="diagnostics">
         <div class="grid g4" id="diagStats"></div>
         <div class="card" style="margin-top:14px;">
@@ -355,7 +340,7 @@ tr:last-child td{border-bottom:none;}
         </div>
       </section>
 
-      <!-- ROUTER MANAGEMENT -->
+      <!-- ROUTERS -->
       <section class="page" data-page="routers">
         <div class="card">
           <div class="toolbar">
@@ -375,15 +360,15 @@ tr:last-child td{border-bottom:none;}
       <section class="page" data-page="mikrotik">
         <div class="grid g4" id="mikrotikStats"></div>
         <div class="card" style="margin-top:14px;">
-          <div class="card-title">PPPoE Aktif (MikroTik-CORE-01)</div>
+          <div class="card-title">PPPoE Aktif <span class="badge b-ok" id="mtLive">Live</span></div>
           <div class="table-wrap"><table>
-            <thead><tr><th>Username</th><th>IP</th><th>Uptime</th><th>Download</th><th>Upload</th></tr></thead>
+            <thead><tr><th>Username</th><th>IP</th><th>Uptime</th></tr></thead>
             <tbody id="mikrotikPppoeBody"></tbody>
           </table></div>
         </div>
       </section>
 
-      <!-- ZTE/ONU -->
+      <!-- ONU -->
       <section class="page" data-page="onu">
         <div class="card">
           <div class="toolbar">
@@ -397,7 +382,7 @@ tr:last-child td{border-bottom:none;}
         </div>
       </section>
 
-      <!-- FIBER REDAMAN -->
+      <!-- FIBER -->
       <section class="page" data-page="fiber">
         <div class="grid g2">
           <div class="card"><div class="card-title">RX Power History (dBm)</div>
@@ -414,15 +399,16 @@ tr:last-child td{border-bottom:none;}
         </div>
       </section>
 
-      <!-- PPPOE MONITORING -->
+      <!-- PPPOE -->
       <section class="page" data-page="pppoe">
         <div class="card">
           <div class="toolbar">
-            <input id="pppoeSearch" placeholder="Cari username / customer...">
-            <select id="pppoeFilterStatus"><option value="">Semua Status</option><option value="online">Online</option><option value="offline">Offline</option></select>
+            <input id="pppoeSearch" placeholder="Cari username / IP...">
+            <div class="spacer"></div>
+            <button class="btn" onclick="loadRealData()">Refresh</button>
           </div>
           <div class="table-wrap"><table>
-            <thead><tr><th>Username</th><th>Customer</th><th>Profile</th><th>IP</th><th>Status</th><th>Download</th><th>Upload</th><th>Aksi</th></tr></thead>
+            <thead><tr><th>Username</th><th>IP</th><th>Uptime</th></tr></thead>
             <tbody id="pppoeTableBody"></tbody>
           </table></div>
         </div>
@@ -430,7 +416,7 @@ tr:last-child td{border-bottom:none;}
 
       <!-- BANDWIDTH -->
       <section class="page" data-page="bandwidth">
-        <div class="card"><div class="card-title">Penggunaan Bandwidth (24 jam)</div>
+        <div class="card"><div class="card-title">Penggunaan Bandwidth</div>
           <div class="chart-box"><canvas id="chartBwFull"></canvas></div></div>
         <div class="card" style="margin-top:14px;">
           <div class="card-title">Top Pengguna Bandwidth</div>
@@ -457,7 +443,7 @@ tr:last-child td{border-bottom:none;}
             <input id="custSearch" placeholder="Cari pelanggan...">
             <select id="custFilterStatus"><option value="">Semua Status</option><option>Active</option><option>Isolir</option><option>Suspended</option><option>Maintenance</option></select>
             <div class="spacer"></div>
-            <button class="btn" onclick="toast('Export CSV berhasil (demo).','ok')">Export CSV</button>
+            <button class="btn" onclick="toast('Export CSV (demo).','ok')">Export CSV</button>
             <button class="btn btn-blue" onclick="toast('Form tambah pelanggan (demo).','ok')">+ Tambah</button>
           </div>
           <div class="table-wrap"><table>
@@ -491,7 +477,7 @@ tr:last-child td{border-bottom:none;}
         </div>
       </section>
 
-      <!-- ACTIVITY LOG -->
+      <!-- LOGS -->
       <section class="page" data-page="logs">
         <div class="card">
           <div class="table-wrap"><table>
@@ -513,26 +499,35 @@ tr:last-child td{border-bottom:none;}
       <section class="page" data-page="settings">
         <div class="grid g2">
           <div class="card">
-            <div class="card-title">Network Agent Configuration</div>
+            <div class="card-title">Status Koneksi</div>
             <table>
-              <tr><td>API Base URL</td><td class="small-muted">(belum diatur)</td></tr>
-              <tr><td>Agent URL</td><td class="small-muted">(belum diatur)</td></tr>
-              <tr><td>Status</td><td><span class="badge b-mute">Not Connected</span></td></tr>
+              <tr><td>API URL</td><td id="setApiUrl" class="small-muted">-</td></tr>
+              <tr><td>Status Agent</td><td id="setStatus"><span class="badge b-mute">Cek...</span></td></tr>
+              <tr><td>Status MikroTik</td><td id="setMtStatus"><span class="badge b-mute">Cek...</span></td></tr>
+              <tr><td>Board</td><td id="setBoard" class="small-muted">-</td></tr>
+              <tr><td>RouterOS</td><td id="setVersion" class="small-muted">-</td></tr>
+              <tr><td>Terakhir fetch</td><td id="setFetched" class="small-muted">-</td></tr>
             </table>
+            <div style="display:flex;gap:8px;margin-top:14px;">
+              <button class="btn btn-blue" onclick="cekAgent()">Test Agent</button>
+              <button class="btn" onclick="loadRealData()">Test MikroTik</button>
+            </div>
           </div>
           <div class="card">
-            <div class="card-title">Supabase Integration</div>
-            <table>
-              <tr><td>Enabled</td><td><span class="badge b-mute">false</span></td></tr>
-              <tr><td>URL</td><td class="small-muted">(belum diatur)</td></tr>
-              <tr><td>Anon Key</td><td class="small-muted">(belum diatur)</td></tr>
-            </table>
-            <p class="small-muted" style="margin-top:10px;">Service role key, password router, dan credential sensitif lain tidak pernah disimpan di frontend.</p>
+            <div class="card-title">Konfigurasi API</div>
+            <p class="small-muted" style="line-height:1.7;">
+              Ubah baris <code>API_BASE</code> di dalam file HTML untuk mengganti alamat agent.
+              Agent harus diakses via <strong>HTTPS</strong> karena frontend di Vercel.
+            </p>
+            <pre style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:11.5px;overflow-x:auto;">const API_BASE = "https://...";</pre>
+            <p class="small-muted" style="margin-top:10px;">
+              Tips: pakai Cloudflare Tunnel atau VPS + domain + SSL.
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- USERS (admin) -->
+      <!-- USERS -->
       <section class="page" data-page="users">
         <div class="card">
           <div class="table-wrap"><table>
@@ -547,7 +542,7 @@ tr:last-child td{border-bottom:none;}
 </div>
 </div>
 
-<!-- ===================== MODALS ===================== -->
+<!-- MODALS -->
 <div class="modal-overlay" id="modalRename">
   <div class="modal">
     <h3>Ganti Nama WiFi</h3>
@@ -563,7 +558,7 @@ tr:last-child td{border-bottom:none;}
 <div class="modal-overlay" id="modalPassword">
   <div class="modal">
     <h3>Ganti Password WiFi</h3>
-    <div class="warn-box">⚠️ Semua perangkat yang terhubung akan terputus setelah password diganti.</div>
+    <div class="warn-box">⚠️ Semua perangkat akan terputus setelah password diganti.</div>
     <div class="field"><label>Password Baru</label><input id="newPass1" type="password" oninput="checkStrength()"></div>
     <div class="strength-bar"><div id="strengthBar"></div></div>
     <div class="field" style="margin-top:12px;"><label>Konfirmasi Password</label><input id="newPass2" type="password"></div>
@@ -581,7 +576,7 @@ tr:last-child td{border-bottom:none;}
     <div class="field"><label>Password Guest</label><input id="guestPass" type="password" placeholder="••••••••"></div>
     <div class="modal-actions">
       <button class="btn" onclick="closeModal('modalGuest')">Batal</button>
-      <button class="btn btn-blue" onclick="closeModal('modalGuest');toast('Pengaturan Guest Network disimpan (demo).','ok')">Simpan</button>
+      <button class="btn btn-blue" onclick="closeModal('modalGuest');toast('Guest Network disimpan (demo).','ok')">Simpan</button>
     </div>
   </div>
 </div>
@@ -600,52 +595,24 @@ tr:last-child td{border-bottom:none;}
 <div id="toastHost"></div>
 
 <script>
-/* ============ CONFIG (siap dihubungkan ke backend nyata) ============ */
-const NETWORK_CONFIG = { apiBaseUrl:"", agentUrl:"", realtimeEnabled:false, pollingInterval:5000 };
-const SUPABASE_CONFIG = { enabled:false, url:"", anonKey:"" };
-const SPEED_TEST_CONFIG = { enabled:false, downloadEndpoint:"", uploadEndpoint:"", pingEndpoint:"" };
-let DEMO_MODE = true;
+/* ============================================================================
+   KONFIGURASI — GANTI BARIS INI DENGAN ALAMAT AGENT KAMU
+   ============================================================================
+   Frontend di Vercel = HTTPS, jadi agent HARUS HTTPS juga.
+   Contoh:
+     const API_BASE = "https://api.domainkamu.com";
+     const API_BASE = "https://random-name.trycloudflare.com";
+     const API_BASE = "https://wcp-agent.up.railway.app";
+   ============================================================================ */
+const API_BASE = "https://GANTI-DENGAN-ALAMAT-AGENT-KAMU";
 
-/* ============ NAV DEFINITION per role ============ */
-const NAV = [
-  {group:"Overview", items:[
-    {id:"dashboard", label:"Dashboard", icon:"📊"},
-  ]},
-  {group:"WiFi Control", items:[
-    {id:"mywifi", label:"My WiFi", icon:"📶", roles:["pelanggan","superadmin"]},
-    {id:"devices", label:"Connected Devices", icon:"💻"},
-  ]},
-  {group:"Network", items:[
-    {id:"routers", label:"Router Management", icon:"🌐", roles:["superadmin","admin","teknisi"]},
-    {id:"mikrotik", label:"MikroTik", icon:"🛰️", roles:["superadmin","admin","teknisi"]},
-    {id:"onu", label:"ONU / ONT", icon:"📡", roles:["superadmin","admin","teknisi"]},
-    {id:"pppoe", label:"PPPoE Monitoring", icon:"🔌", roles:["superadmin","admin","teknisi"]},
-    {id:"bandwidth", label:"Bandwidth", icon:"📈", roles:["superadmin","admin","teknisi"]},
-    {id:"topology", label:"Network Topology", icon:"🗺️", roles:["superadmin","admin","teknisi"]},
-  ]},
-  {group:"Diagnostics", items:[
-    {id:"speedtest", label:"Speed Test", icon:"⚡"},
-    {id:"diagnostics", label:"Internet Diagnostics", icon:"🩺"},
-    {id:"fiber", label:"Fiber Optic Monitoring", icon:"🔬", roles:["superadmin","admin","teknisi"]},
-  ]},
-  {group:"Customer", items:[
-    {id:"customers", label:"Customer Management", icon:"👥", roles:["superadmin","admin"]},
-  ]},
-  {group:"Operations", items:[
-    {id:"tickets", label:"Tickets", icon:"🎫", roles:["superadmin","admin","teknisi"]},
-    {id:"alerts", label:"Alerts", icon:"🔔", roles:["superadmin","admin","teknisi"]},
-    {id:"logs", label:"Activity Logs", icon:"🧾", roles:["superadmin","admin"]},
-    {id:"reports", label:"Reports", icon:"📄", roles:["superadmin","admin"]},
-  ]},
-  {group:"System", items:[
-    {id:"users", label:"User Management", icon:"🛡️", roles:["superadmin"]},
-    {id:"settings", label:"Settings", icon:"⚙️", roles:["superadmin","admin"]},
-  ]}
-];
-const ROLE_LABEL = {superadmin:"Super Admin", admin:"Admin ISP", teknisi:"Teknisi", pelanggan:"Pelanggan"};
+/* ============================================================================ */
+
+let lastData = null;
 let currentRole = "superadmin";
+const ROLE_LABEL = {superadmin:"Super Admin", admin:"Admin ISP", teknisi:"Teknisi", pelanggan:"Pelanggan"};
 
-/* ============ LOGIN ============ */
+/* ===== LOGIN ===== */
 document.querySelectorAll('.role-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.role-btn').forEach(x=>x.classList.remove('active'));
   b.classList.add('active'); currentRole=b.dataset.role;
@@ -663,47 +630,77 @@ function doLogin(){
   const u=document.getElementById('loginUser').value.trim();
   const p=document.getElementById('loginPass').value.trim();
   const err=document.getElementById('loginErr');
-  if(!u||!p){ err.style.display='block'; err.textContent='Email/username dan password wajib diisi.'; return; }
+  if(!u||!p){ err.style.display='block'; err.textContent='Wajib diisi.'; return; }
   err.style.display='none';
   const btn=document.getElementById('loginBtn'); btn.disabled=true; btn.textContent='Memproses...';
   setTimeout(()=>{
     btn.disabled=false; btn.textContent='Masuk';
     document.getElementById('loginScreen').style.display='none';
     document.getElementById('app').style.display='block';
-    initials(u);
+    document.getElementById('userLabel').textContent = ROLE_LABEL[currentRole];
+    document.getElementById('userAvatar').textContent = ROLE_LABEL[currentRole].split(' ').map(x=>x[0]).join('').slice(0,2).toUpperCase();
     buildNav();
     showPage('dashboard');
-    renderAll();
+    initCharts();
+    cekAgent();
+    loadRealData();
+    renderDemoAll();
+    setInterval(loadRealData, 5000);
     pushLog('Login', currentRole, 'success');
-  },600);
-}
-function initials(u){
-  document.getElementById('userLabel').textContent = ROLE_LABEL[currentRole];
-  const parts = ROLE_LABEL[currentRole].split(' ');
-  document.getElementById('userAvatar').textContent = parts.map(p=>p[0]).join('').slice(0,2).toUpperCase();
+  }, 400);
 }
 document.getElementById('logoutBtn').addEventListener('click',()=>{
   pushLog('Logout', currentRole, 'success');
   document.getElementById('app').style.display='none';
   document.getElementById('loginScreen').style.display='flex';
-  document.getElementById('loginUser').value=''; document.getElementById('loginPass').value='';
 });
 
-/* ============ THEME ============ */
+/* ===== THEME ===== */
 document.getElementById('themeToggle').addEventListener('click',()=>{
-  const html=document.documentElement;
-  const cur = html.getAttribute('data-theme');
-  html.setAttribute('data-theme', cur==='dark' ? 'light':'dark');
+  const h=document.documentElement;
+  h.setAttribute('data-theme', h.getAttribute('data-theme')==='dark'?'light':'dark');
 });
 
-/* ============ SIDEBAR / NAV ============ */
+/* ===== NAV ===== */
+const NAV = [
+  {group:"Overview", items:[{id:"dashboard", label:"Dashboard", icon:"📊"}]},
+  {group:"WiFi Control", items:[
+    {id:"mywifi", label:"My WiFi", icon:"📶"},
+    {id:"devices", label:"Connected Devices", icon:"💻"},
+  ]},
+  {group:"Network", items:[
+    {id:"routers", label:"Router Management", icon:"🌐"},
+    {id:"mikrotik", label:"MikroTik", icon:"🛰️"},
+    {id:"onu", label:"ONU / ONT", icon:"📡"},
+    {id:"pppoe", label:"PPPoE Monitoring", icon:"🔌"},
+    {id:"bandwidth", label:"Bandwidth", icon:"📈"},
+    {id:"topology", label:"Network Topology", icon:"🗺️"},
+  ]},
+  {group:"Diagnostics", items:[
+    {id:"speedtest", label:"Speed Test", icon:"⚡"},
+    {id:"diagnostics", label:"Internet Diagnostics", icon:"🩺"},
+    {id:"fiber", label:"Fiber Optic Monitoring", icon:"🔬"},
+  ]},
+  {group:"Customer", items:[
+    {id:"customers", label:"Customer Management", icon:"👥"},
+  ]},
+  {group:"Operations", items:[
+    {id:"tickets", label:"Tickets", icon:"🎫"},
+    {id:"alerts", label:"Alerts", icon:"🔔"},
+    {id:"logs", label:"Activity Logs", icon:"🧾"},
+    {id:"reports", label:"Reports", icon:"📄"},
+  ]},
+  {group:"System", items:[
+    {id:"users", label:"User Management", icon:"🛡️"},
+    {id:"settings", label:"Settings", icon:"⚙️"},
+  ]}
+];
+
 function buildNav(){
   const nav=document.getElementById('navList'); nav.innerHTML='';
   NAV.forEach(g=>{
-    const visible = g.items.filter(it=> !it.roles || it.roles.includes(currentRole));
-    if(!visible.length) return;
     const t=document.createElement('div'); t.className='nav-group-title'; t.textContent=g.group; nav.appendChild(t);
-    visible.forEach(it=>{
+    g.items.forEach(it=>{
       const a=document.createElement('a'); a.href='#'; a.className='nav-item'; a.dataset.page=it.id;
       a.innerHTML=`<span class="dot"></span><span>${it.icon} ${it.label}</span>`;
       a.addEventListener('click',e=>{e.preventDefault(); showPage(it.id); closeSidebarMobile();});
@@ -716,6 +713,7 @@ function showPage(id){
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active', n.dataset.page===id));
   const item = NAV.flatMap(g=>g.items).find(i=>i.id===id);
   document.getElementById('pageTitle').textContent = item ? item.label : id;
+  if(id==='settings') cekAgent();
 }
 document.getElementById('menuBtn').addEventListener('click',()=>{
   document.getElementById('sidebar').classList.add('open');
@@ -727,7 +725,7 @@ function closeSidebarMobile(){
   document.getElementById('sidebarOverlay').classList.remove('open');
 }
 
-/* ============ TOAST ============ */
+/* ===== TOAST ===== */
 function toast(msg, type='info'){
   const host=document.getElementById('toastHost');
   const el=document.createElement('div'); el.className='toast '+(type==='ok'?'ok':type==='err'?'err':'');
@@ -735,11 +733,10 @@ function toast(msg, type='info'){
   setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .3s'; setTimeout(()=>el.remove(),300); }, 3200);
 }
 
-/* ============ MODALS ============ */
+/* ===== MODALS ===== */
 function openModal(id){ document.getElementById(id).classList.add('open'); }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('open'); }));
-
 function confirmAction(text, onYes){
   document.getElementById('confirmText').textContent=text;
   openModal('modalConfirm');
@@ -747,253 +744,373 @@ function confirmAction(text, onYes){
   const clone=btn.cloneNode(true); btn.parentNode.replaceChild(clone,btn);
   clone.addEventListener('click',()=>{ closeModal('modalConfirm'); onYes(); });
 }
-function unsupportedFeature(){ toast('Fitur tidak didukung oleh perangkat ini.','err'); }
-
 function saveRename(){
   const s24=document.getElementById('newSsid24').value.trim();
   const s5=document.getElementById('newSsid5').value.trim();
   if(!s24||!s5){ toast('Nama WiFi tidak boleh kosong.','err'); return; }
-  document.getElementById('ssid24').textContent=s24;
-  document.getElementById('ssid5').textContent=s5;
-  closeModal('modalRename'); toast('Nama WiFi berhasil diperbarui (demo).','ok');
+  closeModal('modalRename'); toast('Nama WiFi diperbarui (demo).','ok');
   pushLog('Ganti SSID', currentRole, 'success');
 }
 function checkStrength(){
   const v=document.getElementById('newPass1').value; let score=0;
   if(v.length>=8) score+=25; if(/[A-Z]/.test(v)) score+=25; if(/[0-9]/.test(v)) score+=25; if(/[^A-Za-z0-9]/.test(v)) score+=25;
-  const bar=document.getElementById('strengthBar').firstElementChild || document.getElementById('strengthBar');
-  const bar2=document.getElementById('strengthBar');
-  bar2.innerHTML = `<div style="width:${score}%;background:${score<50?'var(--bad)':score<75?'var(--warn)':'var(--ok)'}"></div>`;
+  document.getElementById('strengthBar').innerHTML = `<div style="width:${score}%;background:${score<50?'var(--bad)':score<75?'var(--warn)':'var(--ok)'}"></div>`;
 }
 function savePassword(){
   const p1=document.getElementById('newPass1').value, p2=document.getElementById('newPass2').value;
   if(p1.length<8){ toast('Password minimal 8 karakter.','err'); return; }
   if(p1!==p2){ toast('Konfirmasi password tidak cocok.','err'); return; }
-  closeModal('modalPassword'); toast('Password WiFi berhasil diganti (demo). Perangkat akan terputus sementara.','ok');
-  pushLog('Ganti Password WiFi', currentRole, 'success');
-  document.getElementById('newPass1').value=''; document.getElementById('newPass2').value='';
-}
-function toggleWifiBand(band){
-  toast((band==='24'?'2.4 GHz':'5 GHz')+' berhasil diubah (demo).','ok');
-  pushLog('Toggle Band '+band, currentRole, 'success');
+  closeModal('modalPassword'); toast('Password WiFi diperbarui (demo).','ok');
+  pushLog('Ganti Password', currentRole, 'success');
 }
 
-/* ============ DEMO DATA GENERATORS ============ */
+/* ===== HELPERS ===== */
 function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
 function pick(arr){ return arr[rand(0,arr.length-1)]; }
-
-const deviceTypes=['Smartphone','Laptop','Smart TV','Tablet','IoT Camera','Desktop PC'];
-const deviceNames=['Xiaomi Redmi','MacBook Pro','Samsung TV','iPad Air','CCTV Ruang Tamu','PC Kantor','iPhone 14','ASUS ROG','Smart Speaker','Router Mesh'];
-let devicesData = Array.from({length:14}, (_,i)=>({
-  name: deviceNames[i%deviceNames.length]+' '+(i+1),
-  ip: `192.168.1.${10+i}`,
-  mac: Array.from({length:6},()=>rand(16,255).toString(16).padStart(2,'0')).join(':'),
-  type: pick(deviceTypes),
-  band: pick(['2.4 GHz','5 GHz']),
-  signal: rand(-80,-30),
-  down: (Math.random()*20).toFixed(1),
-  up: (Math.random()*8).toFixed(1),
-  status: Math.random()>0.15 ? 'online':'offline'
-}));
-
-function renderDevices(){
-  const q=document.getElementById('devSearch').value.toLowerCase();
-  const fs=document.getElementById('devFilterStatus').value;
-  const fb=document.getElementById('devFilterBand').value;
-  const rows = devicesData.filter(d=>
-    (!q || d.name.toLowerCase().includes(q) || d.ip.includes(q) || d.mac.toLowerCase().includes(q)) &&
-    (!fs || d.status===fs) && (!fb || d.band===fb));
-  const body=document.getElementById('deviceTableBody');
-  if(!rows.length){ body.innerHTML=`<tr><td colspan="9"><div class="empty-state">Tidak ada perangkat ditemukan.</div></td></tr>`; return; }
-  body.innerHTML = rows.map(d=>`
-    <tr>
-      <td>${d.name}</td><td>${d.ip}</td><td>${d.mac}</td><td>${d.type}</td><td>${d.band}</td>
-      <td>${d.signal} dBm</td><td>${d.down}↓ / ${d.up}↑ Mbps</td>
-      <td><span class="badge ${d.status==='online'?'b-ok':'b-mute'}">${d.status==='online'?'Online':'Offline'}</span></td>
-      <td><button class="btn btn-sm" onclick="toast('Perangkat diblokir (demo).','ok')">Blokir</button></td>
-    </tr>`).join('');
-  const stats=document.getElementById('deviceStats');
-  const online=devicesData.filter(d=>d.status==='online').length;
-  stats.innerHTML = statCard('Total Perangkat', devicesData.length,'') +
-    statCard('Online', online,'up') + statCard('Offline', devicesData.length-online,'down') +
-    statCard('IoT / Smart TV', devicesData.filter(d=>d.type==='IoT Camera'||d.type==='Smart TV').length,'');
-}
-['devSearch','devFilterStatus','devFilterBand'].forEach(id=>{
-  document.getElementById(id) && document.getElementById(id).addEventListener('input', renderDevices);
-});
-
 function statCard(label,val,trend){
   return `<div class="card stat-card"><div class="stat-label">${label}</div><div class="stat-value">${val}</div>
-    ${trend? `<div class="stat-sub ${trend}">${trend==='up'?'▲':'▼'} vs kemarin</div>`:''}</div>`;
+    ${trend? `<div class="stat-sub ${trend}">${trend==='up'?'▲':'▼'} live</div>`:''}</div>`;
 }
-
-function renderDashboard(){
-  const stats=document.getElementById('dashStats');
-  stats.innerHTML = statCard('Pelanggan Online', 842,'up') + statCard('Pelanggan Offline', 37,'down') +
-    statCard('Router Online', 58,'up') + statCard('Gangguan Aktif', 3,'down');
-  const sys=document.getElementById('systemStatusGrid');
-  const items=[
-    ['Internet Utama','online'],['Server','online'],['Database','online'],
-    ['API Router','warn'],['Network Agent','offline'],['Realtime Connection','unknown']
-  ];
-  sys.innerHTML = items.map(([n,s])=>`
-    <div class="card" style="padding:12px 14px;">
-      <div style="display:flex;align-items:center;justify-content:between;">
-        <span class="status-dot st-${s}"></span><strong style="font-size:13px;">${n}</strong>
-      </div>
-      <div class="small-muted" style="margin-top:4px;text-transform:capitalize;">${s==='online'?'Online':s==='warn'?'Warning':s==='offline'?'Not Connected (Demo)':'Unknown'}</div>
-    </div>`).join('');
+function skelCards(n){
+  return `<div class="card stat-card"><div class="skel" style="height:14px;width:60%;margin-bottom:8px;"></div><div class="skel" style="height:26px;width:40%;"></div></div>`.repeat(n);
 }
-
-/* charts */
-let chartRefs={};
-function mkLine(id,labels,datasets,opts={}){
-  const ctx=document.getElementById(id); if(!ctx) return;
-  if(chartRefs[id]) chartRefs[id].destroy();
-  chartRefs[id]=new Chart(ctx,{type:opts.type||'line',data:{labels,datasets},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:datasets.length>1,labels:{color:'#8fa1b8',boxWidth:10}}},
-    scales:{x:{ticks:{color:'#8fa1b8',font:{size:10}},grid:{display:false}},y:{ticks:{color:'#8fa1b8',font:{size:10}},grid:{color:'rgba(140,160,190,.1)'}}}}});
+function fmtBytes(b){
+  b=Number(b); if(!b) return '0 B';
+  const u=['B','KB','MB','GB']; let i=0;
+  while(b>=1024 && i<u.length-1){ b/=1024; i++; }
+  return b.toFixed(1)+' '+u[i];
 }
 function hours(n){ return Array.from({length:n},(_,i)=>`${i}:00`); }
 function series(n,min,max){ return Array.from({length:n},()=>rand(min,max)); }
 
-function renderCharts(){
-  mkLine('chartBandwidth', hours(12), [
-    {label:'Download',data:series(12,60,180),borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.12)',fill:true,tension:.35},
-    {label:'Upload',data:series(12,20,80),borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.12)',fill:true,tension:.35}
-  ]);
-  mkLine('chartCustomers', hours(12), [
-    {label:'Online',data:series(12,780,860),borderColor:'#16a34a',tension:.35},
-    {label:'Offline',data:series(12,20,60),borderColor:'#dc2626',tension:.35}
-  ]);
-  mkLine('chartUptime', ['Sen','Sel','Rab','Kam','Jum','Sab','Min'], [{label:'Uptime %',data:series(7,95,100),borderColor:'#2563eb',tension:.35}]);
-  mkLine('chartGangguan', ['Sen','Sel','Rab','Kam','Jum','Sab','Min'], [{label:'Gangguan',data:series(7,0,6),borderColor:'#dc2626',type:'bar',backgroundColor:'#f87171'}],{type:'bar'});
-  mkLine('chartDevices', ['Mobile','Laptop','TV','IoT','Lainnya'], [{label:'Perangkat',data:[420,180,90,140,60],backgroundColor:'#06b6d4'}],{type:'bar'});
-  mkLine('chartBwFull', hours(24), [
-    {label:'Download (Mbps)',data:series(24,50,220),borderColor:'#2563eb',fill:false,tension:.3},
-    {label:'Upload (Mbps)',data:series(24,20,90),borderColor:'#06b6d4',fill:false,tension:.3}
-  ]);
-  mkLine('chartRx', ['-6h','-5h','-4h','-3h','-2h','-1h','Now'], [{label:'RX (dBm)',data:[-19,-18.5,-19.2,-20,-19.8,-19.1,-18.9],borderColor:'#2563eb',tension:.3}]);
-  mkLine('chartDegradation', ['-6h','-5h','-4h','-3h','-2h','-1h','Now'], [{label:'Degradasi (dB)',data:[0.2,0.3,0.5,0.4,0.6,0.5,0.45],borderColor:'#d97706',tension:.3}]);
+/* ===== CEK AGENT ===== */
+async function cekAgent(){
+  const stEl = document.getElementById('setStatus');
+  const apiEl = document.getElementById('setApiUrl');
+  if(apiEl) apiEl.textContent = API_BASE;
+  if(stEl) stEl.innerHTML = '<span class="badge b-mute">Cek...</span>';
+  try {
+    const r = await fetch(API_BASE + '/api/ping');
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    if(stEl) stEl.innerHTML = '<span class="badge b-ok">Agent OK</span>';
+  } catch(e){
+    if(stEl) stEl.innerHTML = '<span class="badge b-bad">Agent tidak terjangkau</span>';
+  }
 }
 
-function renderStatusList(){}
-
-/* MikroTik */
-function renderMikrotik(){
-  document.getElementById('mikrotikStats').innerHTML =
-    statCard('CPU Usage','23%','') + statCard('RAM Usage','61%','') + statCard('PPPoE Aktif',214,'up') + statCard('DHCP Leases',389,'');
-  const body=document.getElementById('mikrotikPppoeBody');
-  body.innerHTML = Array.from({length:8},(_,i)=>{
-    const down=(Math.random()*40).toFixed(1), up=(Math.random()*15).toFixed(1);
-    return `<tr><td>user${100+i}</td><td>10.10.${i}.2</td><td>${rand(1,48)}j ${rand(0,59)}m</td><td>${down} Mbps</td><td>${up} Mbps</td></tr>`;
-  }).join('');
+/* ===== LOAD REAL DATA ===== */
+async function loadRealData(){
+  const pill = document.getElementById('modePill');
+  try {
+    const r = await fetch(API_BASE + '/api/dashboard');
+    if(!r.ok){
+      const t = await r.text();
+      throw new Error('HTTP ' + r.status + ' — ' + t.slice(0,120));
+    }
+    const d = await r.json();
+    lastData = d;
+    if(pill){ pill.textContent='LIVE'; pill.style.background='#dcfce7'; pill.style.color='#166534'; }
+    renderDashReal(d);
+    renderMyWifiReal(d);
+    renderDevicesReal(d);
+    renderPppoeReal(d);
+    renderMikrotikReal(d);
+    renderSettingsReal(d);
+    updateRealtimeCharts(d);
+  } catch(e){
+    console.error(e);
+    if(pill){ pill.textContent='OFFLINE'; pill.style.background='#fee2e2'; pill.style.color='#991b1b'; }
+    const st = document.getElementById('setStatus');
+    if(st) st.innerHTML = '<span class="badge b-bad">Gagal: '+e.message.slice(0,50)+'</span>';
+    const st2 = document.getElementById('setMtStatus');
+    if(st2) st2.innerHTML = '<span class="badge b-bad">Tidak terhubung</span>';
+  }
 }
 
-/* ONU/ONT */
-function renderOnu(){
-  const body=document.getElementById('onuTableBody');
-  const statuses=[['Normal','b-ok'],['Warning','b-warn'],['Offline','b-mute']];
-  body.innerHTML = Array.from({length:10},(_,i)=>{
-    const st=pick(statuses);
-    return `<tr><td>ONU-${1000+i}</td><td>ZTEG${rand(10000,99999)}</td><td>ZTE F660</td><td>ISP_Home_${i}</td>
-      <td>${rand(1,9)}</td><td>${(-Math.random()*10-15).toFixed(1)} dBm</td>
-      <td><span class="badge ${st[1]}">${st[0]}</span></td>
-      <td><button class="btn btn-sm" onclick="toast('SSID diperbarui (demo).','ok')">Kelola</button></td></tr>`;
-  }).join('');
-}
-document.getElementById('onuSearch') && document.getElementById('onuSearch').addEventListener('input',renderOnu);
+/* ===== RENDER REAL: DASHBOARD ===== */
+function renderDashReal(d){
+  const stats = document.getElementById('dashStats');
+  if(stats) stats.innerHTML =
+    statCard('CPU Router', d.cpu + '%', d.cpu<70?'up':'down') +
+    statCard('Download', d.rxMbps + ' Mbps', 'up') +
+    statCard('Upload', d.txMbps + ' Mbps', 'up') +
+    statCard('PPPoE Aktif', d.pppoeAktif, 'up');
 
-/* Fiber */
-function renderFiber(){
-  const body=document.getElementById('fiberTableBody');
-  const statuses=[['Normal','b-ok'],['Warning','b-warn'],['Critical','b-bad']];
-  body.innerHTML = Array.from({length:8},(_,i)=>{
-    const st=pick(statuses);
-    return `<tr><td>ONU-${2000+i}</td><td>OLT-01 / PON-${rand(1,8)}</td>
-      <td>${(-Math.random()*10-14).toFixed(1)} dBm</td><td>${(Math.random()*3+2).toFixed(1)} dBm</td>
-      <td>${rand(35,55)}°C</td><td><span class="badge ${st[1]}">${st[0]}</span></td></tr>`;
-  }).join('');
+  const sys = document.getElementById('systemStatusGrid');
+  if(sys) sys.innerHTML = `
+    <div class="card" style="padding:12px 14px;">
+      <div><span class="status-dot st-online"></span><strong style="font-size:13px;">MikroTik</strong></div>
+      <div class="small-muted" style="margin-top:4px;">${d.board||'-'} · RouterOS ${d.version||'-'}</div>
+    </div>
+    <div class="card" style="padding:12px 14px;">
+      <div><span class="status-dot st-online"></span><strong style="font-size:13px;">Uptime</strong></div>
+      <div class="small-muted" style="margin-top:4px;">${d.uptime||'-'}</div>
+    </div>
+    <div class="card" style="padding:12px 14px;">
+      <div><span class="status-dot st-online"></span><strong style="font-size:13px;">Fetch</strong></div>
+      <div class="small-muted" style="margin-top:4px;">${new Date(d.fetchedAt).toLocaleTimeString('id-ID')}</div>
+    </div>`;
 }
 
-/* PPPoE monitoring table (customer-facing) */
-function renderPppoeTable(){
-  const q=(document.getElementById('pppoeSearch')?.value||'').toLowerCase();
-  const fs=document.getElementById('pppoeFilterStatus')?.value||'';
-  const body=document.getElementById('pppoeTableBody');
-  const rows = Array.from({length:12},(_,i)=>({
-    user:`cust${300+i}`, cust:`Pelanggan ${300+i}`, profile:pick(['Home 20M','Home 50M','Home 100M']),
-    ip:`10.20.${i}.5`, status: Math.random()>0.2?'online':'offline',
-    down:(Math.random()*40).toFixed(1), up:(Math.random()*15).toFixed(1)
-  })).filter(r=>(!q||r.user.includes(q)||r.cust.toLowerCase().includes(q))&&(!fs||r.status===fs));
-  body.innerHTML = rows.length ? rows.map(r=>`
-    <tr><td>${r.user}</td><td>${r.cust}</td><td>${r.profile}</td><td>${r.ip}</td>
-      <td><span class="badge ${r.status==='online'?'b-ok':'b-mute'}">${r.status==='online'?'Online':'Offline'}</span></td>
-      <td>${r.down} Mbps</td><td>${r.up} Mbps</td>
-      <td><button class="btn btn-sm" onclick="toast('Koneksi PPPoE diputus (demo).','ok')">Disconnect</button></td></tr>
-  `).join('') : `<tr><td colspan="8"><div class="empty-state">Tidak ada data.</div></td></tr>`;
-}
-['pppoeSearch','pppoeFilterStatus'].forEach(id=> document.getElementById(id)?.addEventListener('input',renderPppoeTable));
+/* ===== RENDER REAL: MY WIFI ===== */
+function renderMyWifiReal(d){
+  const set = (id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
+  set('ssid24', d.board||'-');
+  set('ssid5', d.version||'-');
+  set('mwUptime', d.uptime||'-');
+  set('mwCpu', d.cpu + '%');
+  set('mwRx', d.rxMbps + ' Mbps');
+  set('mwTx', d.txMbps + ' Mbps');
+  set('mwPppoe', d.pppoeAktif + ' user');
 
-/* Routers */
+  const iface = document.getElementById('ifaceBody');
+  if(iface) iface.innerHTML = (d.interfaces||[]).map(i=>`
+    <tr><td>${i.name}</td>
+      <td><span class="badge ${i.running?'b-ok':'b-mute'}">${i.running?'up':'down'}</span></td>
+      <td>${i.rx}</td><td>${i.tx}</td></tr>`).join('')
+    || `<tr><td colspan="4" class="small-muted">Tidak ada interface.</td></tr>`;
+}
+
+/* ===== RENDER REAL: DEVICES ===== */
+function renderDevicesReal(d){
+  const body = document.getElementById('deviceTableBody');
+  if(!body) return;
+  const q = (document.getElementById('devSearch')?.value||'').toLowerCase();
+  const fs = document.getElementById('devFilterStatus')?.value||'';
+  const list = (d.devices||[]).filter(x=>
+    (!q || (x.name||'').toLowerCase().includes(q) || (x.ip||'').includes(q) || (x.mac||'').toLowerCase().includes(q))
+    && (!fs || x.status===fs)
+  );
+  body.innerHTML = list.map(x=>`
+    <tr><td>${x.name||'-'}</td><td>${x.ip||'-'}</td><td>${x.mac||'-'}</td>
+      <td><span class="badge b-ok">${x.status||'online'}</span></td></tr>`).join('')
+    || `<tr><td colspan="4"><div class="empty-state">Tidak ada device.</div></td></tr>`;
+
+  const stats = document.getElementById('deviceStats');
+  if(stats) stats.innerHTML =
+    statCard('Total Device', (d.devices||[]).length, '') +
+    statCard('PPPoE Aktif', d.pppoeAktif, '') +
+    statCard('RX', d.rxMbps + ' Mbps', 'up') +
+    statCard('TX', d.txMbps + ' Mbps', 'up');
+}
+
+/* ===== RENDER REAL: PPPOE ===== */
+function renderPppoeReal(d){
+  const body = document.getElementById('pppoeTableBody');
+  if(!body) return;
+  const q = (document.getElementById('pppoeSearch')?.value||'').toLowerCase();
+  const list = (d.pppoe||[]).filter(p=>!q || (p.user||'').toLowerCase().includes(q) || (p.ip||'').includes(q));
+  body.innerHTML = list.map(p=>`
+    <tr><td>${p.user||'-'}</td><td>${p.ip||'-'}</td><td>${p.uptime||'-'}</td></tr>`).join('')
+    || `<tr><td colspan="3"><div class="empty-state">Tidak ada PPPoE aktif.</div></td></tr>`;
+}
+
+/* ===== RENDER REAL: MIKROTIK ===== */
+function renderMikrotikReal(d){
+  const stats = document.getElementById('mikrotikStats');
+  if(stats){
+    const freePct = d.totalMemory ? Math.round((d.freeMemory/d.totalMemory)*100) : 0;
+    const usedMemPct = 100 - freePct;
+    stats.innerHTML =
+      statCard('CPU Usage', d.cpu + '%', d.cpu<70?'up':'down') +
+      statCard('RAM Usage', usedMemPct + '%', '') +
+      statCard('PPPoE Aktif', d.pppoeAktif, 'up') +
+      statCard('Uptime', d.uptime, '');
+  }
+  const body = document.getElementById('mikrotikPppoeBody');
+  if(body) body.innerHTML = (d.pppoe||[]).map(p=>`
+    <tr><td>${p.user}</td><td>${p.ip}</td><td>${p.uptime}</td></tr>`).join('')
+    || `<tr><td colspan="3" class="small-muted">Tidak ada PPPoE aktif.</td></tr>`;
+}
+
+/* ===== RENDER REAL: SETTINGS ===== */
+function renderSettingsReal(d){
+  const set = (id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
+  set('setApiUrl', API_BASE);
+  set('setBoard', d.board||'-');
+  set('setVersion', d.version||'-');
+  set('setFetched', new Date(d.fetchedAt).toLocaleString('id-ID'));
+  const mt = document.getElementById('setMtStatus');
+  if(mt) mt.innerHTML = '<span class="badge b-ok">Terhubung</span>';
+}
+
+/* ===== CHARTS ===== */
+let chartRefs = {};
+function mkLine(id, labels, datasets, opts={}){
+  const ctx = document.getElementById(id);
+  if(!ctx) return;
+  if(chartRefs[id]) chartRefs[id].destroy();
+  chartRefs[id] = new Chart(ctx, {
+    type: opts.type || 'line',
+    data: { labels, datasets },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:datasets.length>1, labels:{color:'#8fa1b8', boxWidth:10}}},
+      scales:{
+        x:{ticks:{color:'#8fa1b8', font:{size:10}}, grid:{display:false}},
+        y:{ticks:{color:'#8fa1b8', font:{size:10}}, grid:{color:'rgba(140,160,190,.1)'}}
+      }
+    }
+  });
+  return chartRefs[id];
+}
+
+let bwChart = null, pppoeChart = null;
+
+function initCharts(){
+  const ctx = document.getElementById('chartBandwidth');
+  if(!ctx) return;
+
+  bwChart = new Chart(ctx, {
+    type:'line',
+    data:{labels:[], datasets:[
+      {label:'Download', data:[], borderColor:'#2563eb', backgroundColor:'rgba(37,99,235,.12)', fill:true, tension:.35},
+      {label:'Upload', data:[], borderColor:'#06b6d4', backgroundColor:'rgba(6,182,212,.12)', fill:true, tension:.35}
+    ]},
+    options:{responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{labels:{color:'#8fa1b8', boxWidth:10}}},
+      scales:{
+        x:{ticks:{color:'#8fa1b8', font:{size:10}}, grid:{display:false}},
+        y:{ticks:{color:'#8fa1b8', font:{size:10}}, grid:{color:'rgba(140,160,190,.1)'}}
+      }}
+  });
+
+  const ctx2 = document.getElementById('chartCustomers');
+  if(ctx2) pppoeChart = new Chart(ctx2, {
+    type:'doughnut',
+    data:{labels:['Aktif','Slot Kosong'], datasets:[{data:[0,1], backgroundColor:['#16a34a','#e3e8f0'], borderWidth:0}]},
+    options:{responsive:true, maintainAspectRatio:false, cutout:'65%',
+      plugins:{legend:{position:'bottom', labels:{color:'#8fa1b8', boxWidth:10}}}}
+  });
+
+  // Chart demo
+  mkLine('chartUptime', ['Sen','Sel','Rab','Kam','Jum','Sab','Min'],
+    [{label:'Uptime %', data:series(7, 95, 100), borderColor:'#2563eb', tension:.35}]);
+  mkLine('chartGangguan', ['Sen','Sel','Rab','Kam','Jum','Sab','Min'],
+    [{label:'Gangguan', data:series(7, 0, 6), borderColor:'#dc2626', backgroundColor:'#f87171', type:'bar'}], {type:'bar'});
+  mkLine('chartDevices', ['Mobile','Laptop','TV','IoT','Lainnya'],
+    [{label:'Perangkat', data:[420, 180, 90, 140, 60], backgroundColor:'#06b6d4'}], {type:'bar'});
+  mkLine('chartRx', ['-6h','-5h','-4h','-3h','-2h','-1h','Now'],
+    [{label:'RX (dBm)', data:[-19,-18.5,-19.2,-20,-19.8,-19.1,-18.9], borderColor:'#2563eb', tension:.3}]);
+  mkLine('chartDegradation', ['-6h','-5h','-4h','-3h','-2h','-1h','Now'],
+    [{label:'Degradasi (dB)', data:[0.2,0.3,0.5,0.4,0.6,0.5,0.45], borderColor:'#d97706', tension:.3}]);
+  mkLine('chartBwFull', hours(24),
+    [{label:'Download (Mbps)', data:series(24, 50, 220), borderColor:'#2563eb', tension:.3},
+     {label:'Upload (Mbps)', data:series(24, 20, 90), borderColor:'#06b6d4', tension:.3}]);
+}
+
+function updateRealtimeCharts(d){
+  if(bwChart){
+    const t = new Date().toLocaleTimeString('id-ID', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    bwChart.data.labels.push(t);
+    bwChart.data.datasets[0].data.push(Number(d.rxMbps));
+    bwChart.data.datasets[1].data.push(Number(d.txMbps));
+    if(bwChart.data.labels.length > 20){
+      bwChart.data.labels.shift();
+      bwChart.data.datasets.forEach(ds=>ds.data.shift());
+    }
+    bwChart.update('none');
+  }
+  if(pppoeChart){
+    const max = Math.max(d.pppoeAktif + 5, 20);
+    pppoeChart.data.datasets[0].data = [d.pppoeAktif, max - d.pppoeAktif];
+    pppoeChart.update('none');
+  }
+}
+
+/* ===== DEMO: ROUTERS ===== */
 function renderRouters(){
-  const q=(document.getElementById('routerSearch')?.value||'').toLowerCase();
-  const fv=document.getElementById('routerFilterVendor')?.value||'';
-  const vendors=['MikroTik','ZTE','Huawei','TP-Link','FiberHome'];
-  const data = Array.from({length:10},(_,i)=>({
-    name:`Router-${String(i+1).padStart(2,'0')}`, vendor:vendors[i%vendors.length],
-    ip:`172.16.0.${i+2}`, loc:pick(['Gudang A','Tiang 12','Kantor Pusat','Cluster B','ODP-05']),
-    cpu:rand(10,85), uptime:`${rand(1,30)}h`, status:pick(['online','online','online','warn','offline'])
-  })).filter(r=>(!q||r.name.toLowerCase().includes(q)||r.ip.includes(q)||r.loc.toLowerCase().includes(q))&&(!fv||r.vendor===fv));
-  const body=document.getElementById('routerTableBody');
-  body.innerHTML = data.length ? data.map(r=>`
-    <tr><td>${r.name}</td><td>${r.vendor}</td><td>${r.ip}</td><td>${r.loc}</td><td>${r.cpu}%</td><td>${r.uptime}</td>
+  const vendors = ['MikroTik','ZTE','Huawei','TP-Link','FiberHome'];
+  const data = Array.from({length:10}, (_,i)=>({
+    name:`Router-${String(i+1).padStart(2,'0')}`,
+    vendor:vendors[i%vendors.length],
+    ip:`172.16.0.${i+2}`,
+    loc:pick(['Gudang A','Tiang 12','Kantor Pusat','Cluster B','ODP-05']),
+    cpu:rand(10,85),
+    uptime:`${rand(1,30)}h`,
+    status:pick(['online','online','online','warn','offline'])
+  }));
+  const body = document.getElementById('routerTableBody');
+  if(body) body.innerHTML = data.map(r=>`
+    <tr><td>${r.name}</td><td>${r.vendor}</td><td>${r.ip}</td><td>${r.loc}</td>
+      <td>${r.cpu}%</td><td>${r.uptime}</td>
       <td><span class="badge ${r.status==='online'?'b-ok':r.status==='warn'?'b-warn':'b-mute'}">${r.status}</span></td>
-      <td><button class="btn btn-sm" onclick="confirmAction('Reboot router ini sekarang?', ()=>toast('Perintah reboot dikirim (demo).','ok'))">Reboot</button></td></tr>
-  `).join('') : `<tr><td colspan="8"><div class="empty-state">Router tidak ditemukan.</div></td></tr>`;
+      <td><button class="btn btn-sm" onclick="toast('Reboot dikirim (demo).','ok')">Reboot</button></td></tr>`).join('');
 }
-['routerSearch','routerFilterVendor'].forEach(id=> document.getElementById(id)?.addEventListener('input',renderRouters));
 
-/* Customers */
+/* ===== DEMO: ONU ===== */
+function renderOnu(){
+  const st = [['Normal','b-ok'],['Warning','b-warn'],['Offline','b-mute']];
+  const body = document.getElementById('onuTableBody');
+  if(body) body.innerHTML = Array.from({length:10},(_,i)=>{
+    const s = pick(st);
+    return `<tr><td>ONU-${1000+i}</td><td>ZTEG${rand(10000,99999)}</td><td>ZTE F660</td>
+      <td>ISP_Home_${i}</td><td>${rand(1,9)}</td><td>${(-Math.random()*10-15).toFixed(1)} dBm</td>
+      <td><span class="badge ${s[1]}">${s[0]}</span></td>
+      <td><button class="btn btn-sm" onclick="toast('Kelola ONU (demo).','ok')">Kelola</button></td></tr>`;
+  }).join('');
+}
+
+/* ===== DEMO: FIBER ===== */
+function renderFiber(){
+  const st = [['Normal','b-ok'],['Warning','b-warn'],['Critical','b-bad']];
+  const body = document.getElementById('fiberTableBody');
+  if(body) body.innerHTML = Array.from({length:8},(_,i)=>{
+    const s = pick(st);
+    return `<tr><td>ONU-${2000+i}</td><td>OLT-01 / PON-${rand(1,8)}</td>
+      <td>${(-Math.random()*10-14).toFixed(1)} dBm</td>
+      <td>${(Math.random()*3+2).toFixed(1)} dBm</td>
+      <td>${rand(35,55)}°C</td>
+      <td><span class="badge ${s[1]}">${s[0]}</span></td></tr>`;
+  }).join('');
+}
+
+/* ===== DEMO: CUSTOMERS ===== */
 function renderCustomers(){
-  const q=(document.getElementById('custSearch')?.value||'').toLowerCase();
-  const fs=document.getElementById('custFilterStatus')?.value||'';
-  const statuses=['Active','Active','Active','Isolir','Suspended','Maintenance'];
-  const data=Array.from({length:12},(_,i)=>({
-    name:`Pelanggan ${i+1}`, paket:pick(['Home 20M','Home 50M','Home 100M','Business 200M']),
-    router:`Router-${String((i%10)+1).padStart(2,'0')}`, pppoe:`cust${300+i}`,
-    status:pick(statuses), tgl:`202${rand(3,6)}-0${rand(1,9)}-1${rand(0,9)}`
-  })).filter(c=>(!q||c.name.toLowerCase().includes(q))&&(!fs||c.status===fs));
-  const badgeClass={Active:'b-ok',Isolir:'b-warn',Suspended:'b-bad',Maintenance:'b-mute'};
-  document.getElementById('customerTableBody').innerHTML = data.length ? data.map(c=>`
+  const statuses = ['Active','Active','Active','Isolir','Suspended','Maintenance'];
+  const badge = {Active:'b-ok',Isolir:'b-warn',Suspended:'b-bad',Maintenance:'b-mute'};
+  const data = Array.from({length:12}, (_,i)=>({
+    name:`Pelanggan ${i+1}`,
+    paket:pick(['Home 20M','Home 50M','Home 100M','Business 200M']),
+    router:`Router-${String((i%10)+1).padStart(2,'0')}`,
+    pppoe:`cust${300+i}`,
+    status:pick(statuses),
+    tgl:`202${rand(3,6)}-0${rand(1,9)}-1${rand(0,9)}`
+  }));
+  const body = document.getElementById('customerTableBody');
+  if(body) body.innerHTML = data.map(c=>`
     <tr><td>${c.name}</td><td>${c.paket}</td><td>${c.router}</td><td>${c.pppoe}</td>
-      <td><span class="badge ${badgeClass[c.status]}">${c.status}</span></td><td>${c.tgl}</td>
-      <td><button class="btn btn-sm" onclick="toast('Detail pelanggan (demo).','ok')">Detail</button></td></tr>
-  `).join('') : `<tr><td colspan="7"><div class="empty-state">Tidak ada pelanggan ditemukan.</div></td></tr>`;
+      <td><span class="badge ${badge[c.status]}">${c.status}</span></td><td>${c.tgl}</td>
+      <td><button class="btn btn-sm" onclick="toast('Detail pelanggan (demo).','ok')">Detail</button></td></tr>`).join('');
 }
-['custSearch','custFilterStatus'].forEach(id=> document.getElementById(id)?.addEventListener('input',renderCustomers));
 
-/* Tickets */
+/* ===== DEMO: TICKETS ===== */
 function renderTickets(){
-  const statusList=['Open','Assigned','In progress','Resolved','Closed'];
-  const fs=document.getElementById('ticketFilterStatus')?.value||'';
-  const data=Array.from({length:10},(_,i)=>({
-    id:`TCK-${2000+i}`, cust:`Pelanggan ${i+1}`, issue:pick(['Internet mati','WiFi lambat','Tidak bisa konek','Redaman tinggi','Ganti password']),
-    priority:pick(['Rendah','Sedang','Tinggi']), teknisi:pick(['Andi','Budi','Citra','-']), status:pick(statusList)
-  })).filter(t=>!fs||t.status===fs);
-  const badge={Open:'b-warn',Assigned:'b-mute',['In progress']:'b-warn',Resolved:'b-ok',Closed:'b-mute'};
-  document.getElementById('ticketTableBody').innerHTML = data.map(t=>`
+  const statusList = ['Open','Assigned','In progress','Resolved','Closed'];
+  const badge = {Open:'b-warn',Assigned:'b-mute',['In progress']:'b-warn',Resolved:'b-ok',Closed:'b-mute'};
+  const data = Array.from({length:10}, (_,i)=>({
+    id:`TCK-${2000+i}`,
+    cust:`Pelanggan ${i+1}`,
+    issue:pick(['Internet mati','WiFi lambat','Tidak bisa konek','Redaman tinggi','Ganti password']),
+    priority:pick(['Rendah','Sedang','Tinggi']),
+    teknisi:pick(['Andi','Budi','Citra','-']),
+    status:pick(statusList)
+  }));
+  const body = document.getElementById('ticketTableBody');
+  if(body) body.innerHTML = data.map(t=>`
     <tr><td>${t.id}</td><td>${t.cust}</td><td>${t.issue}</td><td>${t.priority}</td><td>${t.teknisi}</td>
     <td><span class="badge ${badge[t.status]}">${t.status}</span></td></tr>`).join('');
-  document.getElementById('ticketStats').innerHTML =
-    statCard('Total Tiket', data.length,'') + statCard('Open', data.filter(t=>t.status==='Open').length,'') +
-    statCard('In Progress', data.filter(t=>t.status==='In progress').length,'') + statCard('Resolved', data.filter(t=>t.status==='Resolved').length,'up');
+  const stats = document.getElementById('ticketStats');
+  if(stats) stats.innerHTML =
+    statCard('Total Tiket', data.length, '') +
+    statCard('Open', data.filter(t=>t.status==='Open').length, '') +
+    statCard('In Progress', data.filter(t=>t.status==='In progress').length, '') +
+    statCard('Resolved', data.filter(t=>t.status==='Resolved').length, 'up');
 }
-document.getElementById('ticketFilterStatus')?.addEventListener('input',renderTickets);
 
-/* Alerts */
+/* ===== DEMO: ALERTS ===== */
 function renderAlerts(){
-  const alerts=[
+  const alerts = [
     ['Router-07 offline','bad','2 menit lalu'],
     ['Redaman ONU-2005 tinggi (-27 dBm)','warn','14 menit lalu'],
     ['Bandwidth mendekati batas di Cluster B','warn','40 menit lalu'],
@@ -1001,35 +1118,40 @@ function renderAlerts(){
     ['Tiket TCK-2004 telah diselesaikan','ok','2 jam lalu'],
     ['Perangkat baru terhubung ke jaringan','ok','3 jam lalu'],
   ];
-  document.getElementById('alertsList').innerHTML = alerts.map(([msg,sev,time])=>`
+  const el = document.getElementById('alertsList');
+  if(el) el.innerHTML = alerts.map(([msg,sev,time])=>`
     <div class="card" style="padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
       <div><span class="status-dot st-${sev==='bad'?'offline':sev==='warn'?'warn':'online'}"></span>${msg}</div>
       <div class="small-muted">${time}</div>
     </div>`).join('');
 }
 
-/* Logs */
-let activityLogs=[];
-function pushLog(action,user,result){
+/* ===== LOGS ===== */
+let activityLogs = [];
+function pushLog(action, user, result){
   activityLogs.unshift({time:new Date().toLocaleString('id-ID'), user:ROLE_LABEL[user]||user, action, result});
   renderLogs();
 }
 function renderLogs(){
-  const body=document.getElementById('logsTableBody');
+  const body = document.getElementById('logsTableBody');
   if(!body) return;
   body.innerHTML = activityLogs.slice(0,50).map(l=>`
     <tr><td>${l.time}</td><td>${l.user}</td><td>${l.action}</td><td>-</td>
     <td><span class="badge ${l.result==='success'?'b-ok':'b-bad'}">${l.result}</span></td></tr>`).join('');
 }
 
-/* Diagnostics */
+/* ===== DEMO: DIAGNOSTICS ===== */
 function renderDiagStats(){
-  document.getElementById('diagStats').innerHTML =
-    statCard('Public IP','103.xx.xx.12','') + statCard('Gateway','192.168.1.1','') +
-    statCard('Latency','14 ms','up') + statCard('Packet Loss','0%','up');
+  const el = document.getElementById('diagStats');
+  if(el) el.innerHTML =
+    statCard('Public IP','103.xx.xx.12','') +
+    statCard('Gateway','192.168.1.1','') +
+    statCard('Latency','14 ms','up') +
+    statCard('Packet Loss','0%','up');
 }
 function runDiagnostics(){
-  const out=document.getElementById('diagOutput');
+  const out = document.getElementById('diagOutput');
+  if(!out) return;
   out.innerHTML = `<div class="skel" style="height:80px;"></div>`;
   setTimeout(()=>{
     out.innerHTML = `<table><thead><tr><th>Target</th><th>Latency</th><th>Jitter</th><th>Status</th></tr></thead><tbody>
@@ -1038,94 +1160,98 @@ function runDiagnostics(){
       <tr><td>Internet Server</td><td>18 ms</td><td>2.4 ms</td><td><span class="badge b-ok">OK</span></td></tr>
     </tbody></table>`;
     toast('Diagnostics selesai (demo).','ok');
-    pushLog('Run Diagnostics', currentRole,'success');
-  },900);
+    pushLog('Run Diagnostics', currentRole, 'success');
+  }, 800);
 }
 
-/* Speed test */
-let speedInterval=null, speedChart=null;
+/* ===== SPEED TEST ===== */
+let speedInterval = null, speedChart = null;
 function initSpeedo(){
-  const ctx=document.getElementById('speedoChart'); if(!ctx) return;
-  speedChart=new Chart(ctx,{type:'doughnut',data:{labels:['Speed','Sisa'],datasets:[{data:[0,100],backgroundColor:['#2563eb','#e3e8f0'],borderWidth:0}]},
-    options:{responsive:true,maintainAspectRatio:false,cutout:'75%',plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+  const ctx = document.getElementById('speedoChart');
+  if(!ctx) return;
+  if(speedChart) speedChart.destroy();
+  speedChart = new Chart(ctx, {
+    type:'doughnut',
+    data:{labels:['Speed','Sisa'], datasets:[{data:[0,100], backgroundColor:['#2563eb','#e3e8f0'], borderWidth:0}]},
+    options:{responsive:true, maintainAspectRatio:false, cutout:'75%',
+      plugins:{legend:{display:false}, tooltip:{enabled:false}}}
+  });
 }
 document.getElementById('startTestBtn')?.addEventListener('click', startSpeedTest);
 document.getElementById('stopTestBtn')?.addEventListener('click', stopSpeedTest);
 function stopSpeedTest(){
   clearInterval(speedInterval);
-  document.getElementById('speedoStage').textContent='Dihentikan';
-  document.getElementById('startTestBtn').disabled=false;
-  document.getElementById('stopTestBtn').disabled=true;
+  document.getElementById('speedoStage').textContent = 'Dihentikan';
+  document.getElementById('startTestBtn').disabled = false;
+  document.getElementById('stopTestBtn').disabled = true;
 }
 function startSpeedTest(){
-  if(!SPEED_TEST_CONFIG.enabled){
-    document.getElementById('startTestBtn').disabled=true;
-    document.getElementById('stopTestBtn').disabled=false;
-    const stages=['Menghubungkan...','Ping test...','Download test...','Upload test...','Menghitung...','Selesai'];
-    let step=0, val=0;
-    document.getElementById('speedoStage').textContent = 'Demo Mode — '+stages[0];
-    speedInterval=setInterval(()=>{
-      val = Math.min(100, val + rand(5,15));
-      document.getElementById('speedoVal').textContent = val;
-      if(speedChart){ speedChart.data.datasets[0].data=[val,100-val]; speedChart.update(); }
-      step = Math.min(stages.length-1, Math.floor(val/20));
-      document.getElementById('speedoStage').textContent = 'Demo Mode — '+stages[step];
-      if(val>=100){
-        clearInterval(speedInterval);
-        document.getElementById('startTestBtn').disabled=false;
-        document.getElementById('stopTestBtn').disabled=true;
-        document.getElementById('speedoStage').textContent='Demo Mode — Selesai (bukan hasil pengukuran nyata)';
-        const row=`<tr><td>${new Date().toLocaleTimeString('id-ID')}</td><td>${(Math.random()*80+20).toFixed(1)} Mbps</td>
-          <td>${(Math.random()*30+5).toFixed(1)} Mbps</td><td>${rand(8,25)} ms</td><td>Demo Server</td></tr>`;
-        document.getElementById('speedHistoryBody').insertAdjacentHTML('afterbegin', row);
-        pushLog('Speed Test (Demo)', currentRole,'success');
-      }
-    },300);
-  } else {
-    toast('Endpoint speed test nyata belum dikonfigurasi.','err');
-  }
+  document.getElementById('startTestBtn').disabled = true;
+  document.getElementById('stopTestBtn').disabled = false;
+  const stages = ['Menghubungkan...','Ping test...','Download test...','Upload test...','Menghitung...','Selesai'];
+  let val = 0;
+  document.getElementById('speedoStage').textContent = 'Demo Mode — ' + stages[0];
+  speedInterval = setInterval(()=>{
+    val = Math.min(100, val + rand(5, 15));
+    document.getElementById('speedoVal').textContent = val;
+    if(speedChart){ speedChart.data.datasets[0].data = [val, 100-val]; speedChart.update(); }
+    const step = Math.min(stages.length-1, Math.floor(val/20));
+    document.getElementById('speedoStage').textContent = 'Demo Mode — ' + stages[step];
+    if(val >= 100){
+      clearInterval(speedInterval);
+      document.getElementById('startTestBtn').disabled = false;
+      document.getElementById('stopTestBtn').disabled = true;
+      document.getElementById('speedoStage').textContent = 'Demo — Selesai (bukan pengukuran nyata)';
+      const row = `<tr><td>${new Date().toLocaleTimeString('id-ID')}</td>
+        <td>${(Math.random()*80+20).toFixed(1)} Mbps</td>
+        <td>${(Math.random()*30+5).toFixed(1)} Mbps</td>
+        <td>${rand(8,25)} ms</td><td>Demo Server</td></tr>`;
+      const body = document.getElementById('speedHistoryBody');
+      if(body) body.insertAdjacentHTML('afterbegin', row);
+      pushLog('Speed Test (Demo)', currentRole, 'success');
+    }
+  }, 300);
 }
 
-/* Topology */
+/* ===== DEMO: TOPOLOGY ===== */
 function renderTopology(){
-  const nodes=[['🌐','Internet'],['🖧','Core Router'],['📶','OLT'],['📡','ONU'],['🏠','Customer']];
-  document.getElementById('topoWrap').innerHTML = nodes.map((n,i)=>
+  const nodes = [['🌐','Internet'],['🖧','Core Router'],['📶','OLT'],['📡','ONU'],['🏠','Customer']];
+  const el = document.getElementById('topoWrap');
+  if(el) el.innerHTML = nodes.map((n,i)=>
     `<div class="topo-node"><div class="topo-icon ok" onclick="toast('${n[1]}: Online (demo)','ok')">${n[0]}</div>${n[1]}</div>` +
-    (i<nodes.length-1?'<div class="topo-line"></div>':'')
+    (i < nodes.length-1 ? '<div class="topo-line"></div>' : '')
   ).join('');
 }
 
-/* Bandwidth top users */
+/* ===== DEMO: TOP USERS ===== */
 function renderTopUsers(){
-  document.getElementById('topUsersBody').innerHTML = Array.from({length:6},(_,i)=>{
-    const d=(Math.random()*90+10).toFixed(1), u=(Math.random()*30+5).toFixed(1);
+  const body = document.getElementById('topUsersBody');
+  if(body) body.innerHTML = Array.from({length:6}, (_,i)=>{
+    const d = (Math.random()*90+10).toFixed(1);
+    const u = (Math.random()*30+5).toFixed(1);
     return `<tr><td>Pelanggan ${i+1}</td><td>${d} Mbps</td><td>${u} Mbps</td><td>${(+d+ +u).toFixed(1)} Mbps</td></tr>`;
   }).join('');
 }
 
-/* Users management */
+/* ===== DEMO: USERS ===== */
 function renderUsers(){
-  const body=document.getElementById('usersTableBody'); if(!body) return;
-  const data=[
-    ['Rina Kartika','Super Admin','rina@wificontrolpro.demo','Active'],
-    ['Andi Saputra','Admin ISP','andi@wificontrolpro.demo','Active'],
-    ['Budi Teknisi','Teknisi','budi@wificontrolpro.demo','Active'],
-    ['Citra Pelanggan','Pelanggan','citra@wificontrolpro.demo','Active'],
+  const body = document.getElementById('usersTableBody');
+  if(!body) return;
+  const data = [
+    ['Rina Kartika','Super Admin','rina@demo','Active'],
+    ['Andi Saputra','Admin ISP','andi@demo','Active'],
+    ['Budi Teknisi','Teknisi','budi@demo','Active'],
+    ['Citra Pelanggan','Pelanggan','citra@demo','Active'],
   ];
   body.innerHTML = data.map(([n,r,e,s])=>`<tr><td>${n}</td><td>${r}</td><td>${e}</td>
     <td><span class="badge b-ok">${s}</span></td></tr>`).join('');
 }
 
-/* ============ INIT ALL ============ */
-function renderAll(){
-  renderDashboard();
-  renderCharts();
-  renderDevices();
+/* ===== RENDER ALL DEMO ===== */
+function renderDemoAll(){
   renderRouters();
-  renderMikrotik();
   renderOnu();
   renderFiber();
-  renderPppoeTable();
   renderCustomers();
   renderTickets();
   renderAlerts();
@@ -1135,17 +1261,14 @@ function renderAll(){
   renderTopUsers();
   renderUsers();
   initSpeedo();
-  document.getElementById('speedHistoryBody').innerHTML =
-    `<tr><td colspan="5" class="small-muted">Belum ada riwayat test.</td></tr>`;
+  const speedBody = document.getElementById('speedHistoryBody');
+  if(speedBody) speedBody.innerHTML = `<tr><td colspan="5" class="small-muted">Belum ada riwayat test.</td></tr>`;
 }
 
-/* light-weight realtime simulation for dashboard cards only */
-setInterval(()=>{
-  if(document.getElementById('app').style.display==='block' &&
-     document.querySelector('.page[data-page="dashboard"]').classList.contains('active')){
-    renderDashboard();
-  }
-}, 8000);
+/* ===== SEARCH HANDLERS ===== */
+document.getElementById('devSearch')?.addEventListener('input', () => { if(lastData) renderDevicesReal(lastData); });
+document.getElementById('devFilterStatus')?.addEventListener('change', () => { if(lastData) renderDevicesReal(lastData); });
+document.getElementById('pppoeSearch')?.addEventListener('input', () => { if(lastData) renderPppoeReal(lastData); });
 </script>
 </body>
 </html>
